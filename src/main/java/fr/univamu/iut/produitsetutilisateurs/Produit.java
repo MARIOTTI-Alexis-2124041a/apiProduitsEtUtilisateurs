@@ -8,6 +8,7 @@ public class Produit {
 
     private int id;
     private float prix;
+    private String nom;
     private int quantite;
 
     /**
@@ -16,9 +17,10 @@ public class Produit {
      * @param prix le prix du produit pour 1 de quantité
      * @param quantite la quantité du produit disponible en stock
      */
-    public Produit(int id, float prix, int quantite) {
+    public Produit(int id, float prix, int quantite, String nom) {
         this.id = id;
         this.prix = prix;
+        this.nom = nom;
         this.quantite = quantite;
     }
 
@@ -44,5 +46,13 @@ public class Produit {
 
     public int getQuantite() {
         return quantite;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getNom() {
+        return nom;
     }
 }

@@ -52,9 +52,10 @@ public class ProduitsEtUtilisateursRepositoryMariadb implements ProduitsEtUtilis
             {
                 int id = result.getInt("idProduit");
                 float price = result.getFloat("prix");
+                String name = result.getString("nom");
                 int quantity = result.getInt("quantite");
 
-                selectedProduct = new Produit(id, price, quantity);
+                selectedProduct = new Produit(id, price, quantity, name);
             }
 
         } catch (SQLException e) {
@@ -112,10 +113,11 @@ public class ProduitsEtUtilisateursRepositoryMariadb implements ProduitsEtUtilis
             {
                 int id = result.getInt("idProduit");
                 float price = result.getFloat("prix");
+                String name = result.getString("nom");
                 int quantity = result.getInt("quantite");
 
-                // création du livre courant
-                Produit currentProduct = new Produit(id,price,quantity);
+                // création du produit courant
+                Produit currentProduct = new Produit(id, price, quantity, name);
 
                 allProducts.add(currentProduct);
             }
