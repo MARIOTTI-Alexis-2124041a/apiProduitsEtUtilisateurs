@@ -45,3 +45,11 @@ Renvoie :
 ## Ajout utilisateur
 
 Chemin : /api/utilisateur/idAdmin/mdpAdmin/id/mdp/isAdmin
+
+## Savoir si un utilisateur est gestionnaire ou non
+
+Chemin : /api/utilisateur/isAdmin/id
+
+## Savoir si un utilisateur existe ou non
+
+Chemin : /api/utilisateur/isExist/id

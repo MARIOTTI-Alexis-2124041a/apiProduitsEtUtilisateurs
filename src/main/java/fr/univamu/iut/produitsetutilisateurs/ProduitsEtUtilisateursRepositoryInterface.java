@@ -68,4 +68,11 @@ public interface ProduitsEtUtilisateursRepositoryInterface {
      * @return un booleen identifiant si l'identifiant et le mot de passe indiqués correspondent à un compte dans la base de donnée
      */
     public boolean isLogged(int userId, String password);
+
+    /**
+     * Renvoie un booleen identifiant si l'identifiant indiqué correspond à un utilisateur dans la base de donnée
+     * @param userId identifiant de l'utilisateur souhaité
+     * @return booleen identifiant si l'id indiqué existe ou non
+     */
+    public boolean isExist(int userId);
 }

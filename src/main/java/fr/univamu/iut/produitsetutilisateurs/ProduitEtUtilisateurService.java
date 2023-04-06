@@ -116,7 +116,7 @@ public class ProduitEtUtilisateurService {
         String result = null;
         boolean isAdmin = repo.isAdmin(userId);
 
-        // création du json et conversion du produit
+        // création du json et conversion du booleen
         try (Jsonb jsonb = JsonbBuilder.create()) {
             result = jsonb.toJson(isAdmin);
         } catch (Exception e) {
@@ -134,4 +134,23 @@ public class ProduitEtUtilisateurService {
     public boolean isLogged(int id, String password){
         return repo.isLogged(id,password);
     }
+
+    /**
+     * Renvoie une string contenant un booleen au format JSON identifiant si l'identifiant indiqué correspond à un utilisateur dans la base de donnée
+     * @param userId identifiant de l'utilisateur souhaité
+     * @return une string contenant un booleen au format JSON identifiant si l'id indiqué existe ou non
+     */
+    public String isExistJSON(int userId){
+        String result = null;
+        boolean isExist = repo.isExist(userId);
+
+        // création du json et conversion du booleen
+        try (Jsonb jsonb = JsonbBuilder.create()) {
+            result = jsonb.toJson(isExist);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return result;
+    }
+
 }

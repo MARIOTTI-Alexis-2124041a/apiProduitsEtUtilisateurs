@@ -259,12 +259,35 @@ public class ProduitsEtUtilisateursRepositoryMariadb implements ProduitsEtUtilis
 
             if (result.next()){
                 isLogged = true;
-            } else {
-                isLogged = false;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return isLogged;
+    }
+
+    /**
+     * Renvoie un booleen identifiant si l'identifiant indiqué correspond à un utilisateur dans la base de donnée
+     * @param userId identifiant de l'utilisateur souhaité
+     * @return booleen identifiant si l'id indiqué existe ou non
+     */
+    public boolean isExist(int userId){
+        boolean isExist = false;
+
+        String query = "SELECT * FROM `Utilisateur` WHERE idUtilisateur = ?";
+        // construction et exécution d'une requête préparée
+        try ( PreparedStatement ps = dbConnection.prepareStatement(query) ){
+            ps.setInt(1, userId);
+
+            // exécution de la requête
+            ResultSet result = ps.executeQuery();
+
+            if (result.next()){
+                isExist = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return isExist;
     }
 }

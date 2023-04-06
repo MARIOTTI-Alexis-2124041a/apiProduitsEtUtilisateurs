@@ -42,11 +42,11 @@ public class UtilisateurRessource {
     /**
      * Enpoint permettant de publier si l'utilisateur associé à l'id est un gestionnaire ou non
      * @param userId identifiant de l'utilisateur desiré
-     * @return la liste des clients (avec leurs informations) au format JSON
+     * @return booleen au format JSON
      */
     @GET
     @Produces("application/json")
-    @Path("{userId}")
+    @Path("isAdmin/{userId}")
     public String isAdmin(@PathParam("userId") int userId) {
         return service.isAdminJSON(userId);
     }
@@ -72,5 +72,17 @@ public class UtilisateurRessource {
             return Response.status(Response.Status.CONFLICT).build();
         }
         return Response.status(Response.Status.CONFLICT).build();
+    }
+
+    /**
+     * Enpoint permettant de publier si un utilisateur est associé à l'id ou non
+     * @param userId identifiant de l'utilisateur desiré
+     * @return booleen au format JSON
+     */
+    @GET
+    @Produces("application/json")
+    @Path("isExist/{userId}")
+    public String isExist(@PathParam("userId") int userId) {
+        return service.isExistJSON(userId);
     }
 }
